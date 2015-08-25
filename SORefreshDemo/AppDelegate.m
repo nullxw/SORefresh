@@ -17,6 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSLog(@"Bundle path:%@", [[NSBundle mainBundle]bundlePath]);
     return YES;
 }
 
