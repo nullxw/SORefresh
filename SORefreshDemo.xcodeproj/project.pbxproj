@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D97B3FC41B8C658700440D20 /* SORefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B3FC01B8C658700440D20 /* SORefreshNormalHeader.m */; };
+		D97B3FC51B8C658700440D20 /* UIScrollView+SORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B3FC21B8C658700440D20 /* UIScrollView+SORefresh.m */; };
 		D993A50D1B8AF3E1005504BB /* SORefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D993A50C1B8AF3E1005504BB /* SORefresh.bundle */; };
+		D9A7528A1B8D93450020E4C6 /* SODemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A752891B8D93450020E4C6 /* SODemoTableViewController.m */; };
+		D9A7528D1B8D93960020E4C6 /* SODemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A7528C1B8D93960020E4C6 /* SODemoViewController.m */; };
+		D9A752901B8D93B10020E4C6 /* SODemo2VIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A7528F1B8D93B10020E4C6 /* SODemo2VIewController.m */; };
+		D9A752931B8DC7FB0020E4C6 /* SORefreshScrollObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A752921B8DC7FB0020E4C6 /* SORefreshScrollObserver.m */; };
 		D9C4075C1B82DAE900BF19FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C4075B1B82DAE900BF19FD /* main.m */; };
 		D9C4075F1B82DAE900BF19FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C4075E1B82DAE900BF19FD /* AppDelegate.m */; };
 		D9C407621B82DAE900BF19FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C407611B82DAE900BF19FD /* ViewController.m */; };
@@ -15,11 +21,7 @@
 		D9C407671B82DAE900BF19FD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C407661B82DAE900BF19FD /* Images.xcassets */; };
 		D9C4076A1B82DAE900BF19FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C407681B82DAE900BF19FD /* LaunchScreen.xib */; };
 		D9C407761B82DAE900BF19FD /* SORefreshDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C407751B82DAE900BF19FD /* SORefreshDemoTests.m */; };
-		D9C407841B82DC1F00BF19FD /* UIScrollView+SORefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C407831B82DC1F00BF19FD /* UIScrollView+SORefresh.m */; };
 		D9C4078A1B82E24A00BF19FD /* SORefreshContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C407891B82E24A00BF19FD /* SORefreshContainer.m */; };
-		D9E27BEB1B85C7DD00157931 /* SORefreshHeaderContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E27BEA1B85C7DD00157931 /* SORefreshHeaderContainer.m */; };
-		D9E27BF11B85D0D200157931 /* SORefreshNormalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E27BF01B85D0D200157931 /* SORefreshNormalHeader.m */; };
-		D9E27BF41B85D30000157931 /* SORefreshFooterContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E27BF31B85D30000157931 /* SORefreshFooterContainer.m */; };
 		D9E27BF71B85D35100157931 /* SORefreshNormalFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E27BF61B85D35100157931 /* SORefreshNormalFooter.m */; };
 /* End PBXBuildFile section */
 
@@ -34,7 +36,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D97B3FBF1B8C658700440D20 /* SORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORefreshNormalHeader.h; path = SORefresh/SORefreshNormalHeader.h; sourceTree = "<group>"; };
+		D97B3FC01B8C658700440D20 /* SORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORefreshNormalHeader.m; path = SORefresh/SORefreshNormalHeader.m; sourceTree = "<group>"; };
+		D97B3FC11B8C658700440D20 /* UIScrollView+SORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SORefresh.h"; path = "SORefresh/UIScrollView+SORefresh.h"; sourceTree = "<group>"; };
+		D97B3FC21B8C658700440D20 /* UIScrollView+SORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+SORefresh.m"; path = "SORefresh/UIScrollView+SORefresh.m"; sourceTree = "<group>"; };
 		D993A50C1B8AF3E1005504BB /* SORefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SORefresh.bundle; path = SORefresh/SORefresh.bundle; sourceTree = "<group>"; };
+		D9A752881B8D93450020E4C6 /* SODemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODemoTableViewController.h; sourceTree = "<group>"; };
+		D9A752891B8D93450020E4C6 /* SODemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODemoTableViewController.m; sourceTree = "<group>"; };
+		D9A7528B1B8D93960020E4C6 /* SODemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODemoViewController.h; sourceTree = "<group>"; };
+		D9A7528C1B8D93960020E4C6 /* SODemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODemoViewController.m; sourceTree = "<group>"; };
+		D9A7528E1B8D93B10020E4C6 /* SODemo2VIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SODemo2VIewController.h; sourceTree = "<group>"; };
+		D9A7528F1B8D93B10020E4C6 /* SODemo2VIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SODemo2VIewController.m; sourceTree = "<group>"; };
+		D9A752911B8DC7FB0020E4C6 /* SORefreshScrollObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SORefreshScrollObserver.h; sourceTree = "<group>"; };
+		D9A752921B8DC7FB0020E4C6 /* SORefreshScrollObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SORefreshScrollObserver.m; sourceTree = "<group>"; };
 		D9C407561B82DAE900BF19FD /* SORefreshDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SORefreshDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C4075A1B82DAE900BF19FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9C4075B1B82DAE900BF19FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -49,17 +63,9 @@
 		D9C407741B82DAE900BF19FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9C407751B82DAE900BF19FD /* SORefreshDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SORefreshDemoTests.m; sourceTree = "<group>"; };
 		D9C407811B82DB6500BF19FD /* SORefresh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SORefresh.h; path = SORefresh/SORefresh.h; sourceTree = "<group>"; };
-		D9C407821B82DC1F00BF19FD /* UIScrollView+SORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SORefresh.h"; sourceTree = "<group>"; };
-		D9C407831B82DC1F00BF19FD /* UIScrollView+SORefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SORefresh.m"; sourceTree = "<group>"; };
 		D9C407851B82DD3400BF19FD /* SORefreshContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SORefreshContent.h; sourceTree = "<group>"; };
 		D9C407881B82E24A00BF19FD /* SORefreshContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORefreshContainer.h; path = SORefresh/SORefreshContainer.h; sourceTree = "<group>"; };
 		D9C407891B82E24A00BF19FD /* SORefreshContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORefreshContainer.m; path = SORefresh/SORefreshContainer.m; sourceTree = "<group>"; };
-		D9E27BE91B85C7DD00157931 /* SORefreshHeaderContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SORefreshHeaderContainer.h; sourceTree = "<group>"; };
-		D9E27BEA1B85C7DD00157931 /* SORefreshHeaderContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SORefreshHeaderContainer.m; sourceTree = "<group>"; };
-		D9E27BEF1B85D0D200157931 /* SORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SORefreshNormalHeader.h; sourceTree = "<group>"; };
-		D9E27BF01B85D0D200157931 /* SORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SORefreshNormalHeader.m; sourceTree = "<group>"; };
-		D9E27BF21B85D30000157931 /* SORefreshFooterContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORefreshFooterContainer.h; path = SORefresh/SORefreshFooterContainer.h; sourceTree = "<group>"; };
-		D9E27BF31B85D30000157931 /* SORefreshFooterContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORefreshFooterContainer.m; path = SORefresh/SORefreshFooterContainer.m; sourceTree = "<group>"; };
 		D9E27BF51B85D35100157931 /* SORefreshNormalFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORefreshNormalFooter.h; path = SORefresh/SORefreshNormalFooter.h; sourceTree = "<group>"; };
 		D9E27BF61B85D35100157931 /* SORefreshNormalFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORefreshNormalFooter.m; path = SORefresh/SORefreshNormalFooter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +114,12 @@
 				D9C4075E1B82DAE900BF19FD /* AppDelegate.m */,
 				D9C407601B82DAE900BF19FD /* ViewController.h */,
 				D9C407611B82DAE900BF19FD /* ViewController.m */,
+				D9A752881B8D93450020E4C6 /* SODemoTableViewController.h */,
+				D9A752891B8D93450020E4C6 /* SODemoTableViewController.m */,
+				D9A7528B1B8D93960020E4C6 /* SODemoViewController.h */,
+				D9A7528C1B8D93960020E4C6 /* SODemoViewController.m */,
+				D9A7528E1B8D93B10020E4C6 /* SODemo2VIewController.h */,
+				D9A7528F1B8D93B10020E4C6 /* SODemo2VIewController.m */,
 				D9C407631B82DAE900BF19FD /* Main.storyboard */,
 				D9C407661B82DAE900BF19FD /* Images.xcassets */,
 				D9C407681B82DAE900BF19FD /* LaunchScreen.xib */,
@@ -145,21 +157,19 @@
 		D9C4077F1B82DB1B00BF19FD /* SORefresh */ = {
 			isa = PBXGroup;
 			children = (
-				D993A50C1B8AF3E1005504BB /* SORefresh.bundle */,
 				D9C407811B82DB6500BF19FD /* SORefresh.h */,
-				D9C407821B82DC1F00BF19FD /* UIScrollView+SORefresh.h */,
-				D9C407831B82DC1F00BF19FD /* UIScrollView+SORefresh.m */,
+				D97B3FC11B8C658700440D20 /* UIScrollView+SORefresh.h */,
+				D97B3FC21B8C658700440D20 /* UIScrollView+SORefresh.m */,
 				D9C407851B82DD3400BF19FD /* SORefreshContent.h */,
 				D9C407881B82E24A00BF19FD /* SORefreshContainer.h */,
 				D9C407891B82E24A00BF19FD /* SORefreshContainer.m */,
-				D9E27BE91B85C7DD00157931 /* SORefreshHeaderContainer.h */,
-				D9E27BEA1B85C7DD00157931 /* SORefreshHeaderContainer.m */,
-				D9E27BEF1B85D0D200157931 /* SORefreshNormalHeader.h */,
-				D9E27BF01B85D0D200157931 /* SORefreshNormalHeader.m */,
-				D9E27BF21B85D30000157931 /* SORefreshFooterContainer.h */,
-				D9E27BF31B85D30000157931 /* SORefreshFooterContainer.m */,
+				D9A752911B8DC7FB0020E4C6 /* SORefreshScrollObserver.h */,
+				D9A752921B8DC7FB0020E4C6 /* SORefreshScrollObserver.m */,
+				D97B3FBF1B8C658700440D20 /* SORefreshNormalHeader.h */,
+				D97B3FC01B8C658700440D20 /* SORefreshNormalHeader.m */,
 				D9E27BF51B85D35100157931 /* SORefreshNormalFooter.h */,
 				D9E27BF61B85D35100157931 /* SORefreshNormalFooter.m */,
+				D993A50C1B8AF3E1005504BB /* SORefresh.bundle */,
 			);
 			name = SORefresh;
 			sourceTree = "<group>";
@@ -265,15 +275,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9E27BF41B85D30000157931 /* SORefreshFooterContainer.m in Sources */,
-				D9E27BEB1B85C7DD00157931 /* SORefreshHeaderContainer.m in Sources */,
+				D9A752901B8D93B10020E4C6 /* SODemo2VIewController.m in Sources */,
+				D9A752931B8DC7FB0020E4C6 /* SORefreshScrollObserver.m in Sources */,
 				D9C4078A1B82E24A00BF19FD /* SORefreshContainer.m in Sources */,
 				D9C407621B82DAE900BF19FD /* ViewController.m in Sources */,
-				D9E27BF11B85D0D200157931 /* SORefreshNormalHeader.m in Sources */,
+				D9A7528A1B8D93450020E4C6 /* SODemoTableViewController.m in Sources */,
 				D9E27BF71B85D35100157931 /* SORefreshNormalFooter.m in Sources */,
-				D9C407841B82DC1F00BF19FD /* UIScrollView+SORefresh.m in Sources */,
+				D97B3FC41B8C658700440D20 /* SORefreshNormalHeader.m in Sources */,
 				D9C4075F1B82DAE900BF19FD /* AppDelegate.m in Sources */,
+				D9A7528D1B8D93960020E4C6 /* SODemoViewController.m in Sources */,
 				D9C4075C1B82DAE900BF19FD /* main.m in Sources */,
+				D97B3FC51B8C658700440D20 /* UIScrollView+SORefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

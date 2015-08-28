@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (IBAction)dismissNav:(UIStoryboardSegue *)sender;
 
 @end
 

@@ -1,26 +1,27 @@
 //
-//  ViewController.m
+//  SODemo2VIewController.m
 //  SORefreshDemo
 //
-//  Created by scfhao on 15/8/18.
+//  Created by scfhao on 15/8/26.
 //  Copyright (c) 2015年 scfhao. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SODemo2VIewController.h"
 #import "SORefresh.h"
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface SODemo2VIewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (assign, nonatomic) NSInteger dataCount;
 
 @end
 
-@implementation ViewController
+@implementation SODemo2VIewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     [self.tableView addSORefreshNormalHeaderWithRefreshBlock:^{
         [self prepareSomeData];
     }];
@@ -33,7 +34,7 @@
 - (void)prepareSomeData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.dataCount = 14;
+        self.dataCount = 20;
         [self.tableView.headerContainer endRefresh];
         [self.tableView reloadData];
     });
@@ -43,17 +44,9 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.dataCount += 10;
-        if (self.dataCount > 100) {
-            self.tableView.footerContainer.state = SORefreshStateNoMoreData;
-        }
         [self.tableView.footerContainer endRefresh];
         [self.tableView reloadData];
     });
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -72,9 +65,9 @@
     return cell;
 }
 
-- (void)dismissNav:(UIStoryboardSegue *)sender
+- (void)dealloc
 {
-    
+    NSLog(@"Demo2ViewController dealloc");
 }
 
 @end

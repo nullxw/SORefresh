@@ -1,6 +1,6 @@
 //
 //  SORefresh.h
-//  SORefreshDemo
+//  https://github.com/scfhao/SORefresh
 //
 //  Created by scfhao on 15/8/18.
 //  Copyright (c) 2015年 scfhao. All rights reserved.
@@ -12,7 +12,6 @@
 #import "UIScrollView+SORefresh.h"
 #import "SORefreshContent.h"
 #import "SORefreshContainer.h"
-#import "SORefreshHeaderContainer.h"
 
 #define SORefreshFastAnimationDuration 0.25
 #define SORefreshSlowAnimationDuration 0.4

@@ -1,6 +1,6 @@
 //
 //  UIScrollView.m
-//  SORefreshDemo
+//  https://github.com/scfhao/SORefresh
 //
 //  Created by scfhao on 15/8/18.
 //  Copyright (c) 2015年 scfhao. All rights reserved.
@@ -8,17 +8,23 @@
 
 #import "UIScrollView+SORefresh.h"
 
-#import "SORefreshHeaderContainer.h"
-#import "SORefreshFooterContainer.h"
+#import "SORefreshScrollObserver.h"
 
 #import "SORefreshNormalHeader.h"
 #import "SORefreshNormalFooter.h"
 
 #import <objc/runtime.h>
 
+@interface UIScrollView (SORefreshScrollObserver)
+
+@property (strong, nonatomic) SORefreshScrollObserver *scrollObserver;
+
+@end
+
 @implementation UIScrollView (SORefresh)
 
-static const char SORefreshHeaderKey = 'S';
+#pragma mark - headerContainer
+static const char SORefreshHeaderKey = 'H';
 - (void)setHeaderContainer:(SORefreshHeaderContainer *)headerContainer
 {
     if (headerContainer != self.headerContainer) {
@@ -41,12 +47,20 @@ static const char SORefreshHeaderKey = 'S';
     return objc_getAssociatedObject(self, &SORefreshHeaderKey);
 }
 
-static const char SORefreshFooterKey = 'O';
+#pragma mark footerContainer
+static const char SORefreshFooterKey = 'F';
 - (void)setFooterContainer:(SORefreshFooterContainer *)footerContainer
 {
     if (footerContainer != self.footerContainer) {
         [self.footerContainer removeFromSuperview];
         [self addSubview:footerContainer];
+        
+        footerContainer.translatesAutoresizingMaskIntoConstraints = NO;
+        NSString *vFormat = [NSString stringWithFormat:@"V:|-(%.f)-[footerContainer(%.0f)]", self.contentSize.height, footerContainer.contentHeight];
+        NSMutableArray *constraints = [[NSMutableArray alloc]init];
+        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[footerContainer(==self)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(footerContainer, self)]];
+        [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:vFormat options:0 metrics:nil views:NSDictionaryOfVariableBindings(footerContainer)]];
+        [self addConstraints:constraints];
         
         [self willChangeValueForKey:@"footerContainer"];
         objc_setAssociatedObject(self, &SORefreshFooterKey, footerContainer, OBJC_ASSOCIATION_ASSIGN);
@@ -58,6 +72,25 @@ static const char SORefreshFooterKey = 'O';
 {
     return objc_getAssociatedObject(self, &SORefreshFooterKey);
 }
+
+#pragma mark scrollObserver
+
+static const char SORefreshScrollObserverKey = 'O';
+- (void)setScrollObserver:(SORefreshScrollObserver *)scrollObserver
+{
+    if (scrollObserver != self.scrollObserver) {
+        [self willChangeValueForKey:@"scrollObserver"];
+        objc_setAssociatedObject(self, &SORefreshScrollObserverKey, scrollObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self didChangeValueForKey:@"scrollObserver"];
+    }
+}
+
+- (SORefreshScrollObserver *)scrollObserver
+{
+    return objc_getAssociatedObject(self, &SORefreshScrollObserverKey);
+}
+
+#pragma mark - Interface
 
 - (void)addSORefreshNormalHeaderWithRefreshBlock:(SORefreshingBlock)refreshBlock
 {
