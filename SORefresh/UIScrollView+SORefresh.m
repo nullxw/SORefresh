@@ -15,12 +15,6 @@
 
 #import <objc/runtime.h>
 
-@interface UIScrollView (SORefreshScrollObserver)
-
-@property (strong, nonatomic) SORefreshScrollObserver *scrollObserver;
-
-@end
-
 @implementation UIScrollView (SORefresh)
 
 #pragma mark - headerContainer
@@ -39,6 +33,7 @@ static const char SORefreshHeaderKey = 'H';
         [self willChangeValueForKey:@"headerContainer"];
         objc_setAssociatedObject(self, &SORefreshHeaderKey, headerContainer, OBJC_ASSOCIATION_ASSIGN);
         [self didChangeValueForKey:@"headerContainer"];
+        [self setupScrollObserver];
     }
 }
 
@@ -61,10 +56,12 @@ static const char SORefreshFooterKey = 'F';
         [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[footerContainer(==self)]" options:0 metrics:nil views:NSDictionaryOfVariableBindings(footerContainer, self)]];
         [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:vFormat options:0 metrics:nil views:NSDictionaryOfVariableBindings(footerContainer)]];
         [self addConstraints:constraints];
+        self.SOBottomInset += footerContainer.contentHeight;
         
         [self willChangeValueForKey:@"footerContainer"];
         objc_setAssociatedObject(self, &SORefreshFooterKey, footerContainer, OBJC_ASSOCIATION_ASSIGN);
         [self didChangeValueForKey:@"footerContainer"];
+        [self setupScrollObserver];
     }
 }
 
@@ -74,6 +71,12 @@ static const char SORefreshFooterKey = 'F';
 }
 
 #pragma mark scrollObserver
+- (void)setupScrollObserver
+{
+    if (!self.scrollObserver) {
+        self.scrollObserver = [SORefreshScrollObserver observerWithScrollView:self];
+    }
+}
 
 static const char SORefreshScrollObserverKey = 'O';
 - (void)setScrollObserver:(SORefreshScrollObserver *)scrollObserver
@@ -88,6 +91,30 @@ static const char SORefreshScrollObserverKey = 'O';
 - (SORefreshScrollObserver *)scrollObserver
 {
     return objc_getAssociatedObject(self, &SORefreshScrollObserverKey);
+}
+
+- (CGFloat)SOTopInset
+{
+    return self.contentInset.top;
+}
+
+- (void)setSOTopInset:(CGFloat)SOTopInset
+{
+    UIEdgeInsets insets = self.contentInset;
+    insets.top = SOTopInset;
+    self.contentInset = insets;
+}
+
+- (CGFloat)SOBottomInset
+{
+    return self.contentInset.bottom;
+}
+
+- (void)setSOBottomInset:(CGFloat)SOBottomInset
+{
+    UIEdgeInsets insets = self.contentInset;
+    insets.bottom = SOBottomInset;
+    self.contentInset = insets;
 }
 
 #pragma mark - Interface

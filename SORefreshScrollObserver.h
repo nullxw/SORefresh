@@ -14,6 +14,10 @@
  */
 @interface SORefreshScrollObserver : NSObject
 
+@property (nonatomic, getter=isHeaderRefreshing) BOOL headerRefreshing;
+@property (nonatomic, getter=isFooterRefreshing) BOOL footerRefreshing;
+@property (nonatomic) BOOL hasMoreData;
+
 + (instancetype)observerWithScrollView:(UIScrollView *)scrollView;
 - (void)stopObserver;
 

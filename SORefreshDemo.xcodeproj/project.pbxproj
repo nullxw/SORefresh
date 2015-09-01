@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D961A2D71B90668100946729 /* SORefreshConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SORefreshConfigure.h; path = SORefresh/SORefreshConfigure.h; sourceTree = "<group>"; };
 		D97B3FBF1B8C658700440D20 /* SORefreshNormalHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SORefreshNormalHeader.h; path = SORefresh/SORefreshNormalHeader.h; sourceTree = "<group>"; };
 		D97B3FC01B8C658700440D20 /* SORefreshNormalHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SORefreshNormalHeader.m; path = SORefresh/SORefreshNormalHeader.m; sourceTree = "<group>"; };
 		D97B3FC11B8C658700440D20 /* UIScrollView+SORefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+SORefresh.h"; path = "SORefresh/UIScrollView+SORefresh.h"; sourceTree = "<group>"; };
@@ -158,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C407811B82DB6500BF19FD /* SORefresh.h */,
+				D961A2D71B90668100946729 /* SORefreshConfigure.h */,
 				D97B3FC11B8C658700440D20 /* UIScrollView+SORefresh.h */,
 				D97B3FC21B8C658700440D20 /* UIScrollView+SORefresh.m */,
 				D9C407851B82DD3400BF19FD /* SORefreshContent.h */,

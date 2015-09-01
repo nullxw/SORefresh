@@ -28,14 +28,14 @@
     [self.tableView addSORefreshNormalFooterWithRefreshBlock:^{
         [self loadMoreData];
     }];
-    [self.tableView.headerContainer beginRefresh];
+    self.tableView.scrollObserver.headerRefreshing = YES;
 }
 
 - (void)prepareSomeData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.dataCount = 20;
-        [self.tableView.headerContainer endRefresh];
+        self.tableView.scrollObserver.headerRefreshing = NO;
         [self.tableView reloadData];
     });
 }
@@ -44,7 +44,7 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.dataCount += 10;
-        [self.tableView.footerContainer endRefresh];
+        self.tableView.scrollObserver.footerRefreshing = NO;
         [self.tableView reloadData];
     });
 }

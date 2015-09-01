@@ -7,7 +7,7 @@
 //
 
 #import "SORefreshNormalHeader.h"
-#import "SORefresh.h"
+#import "SORefreshConfigure.h"
 
 @interface SORefreshNormalHeader ()
 

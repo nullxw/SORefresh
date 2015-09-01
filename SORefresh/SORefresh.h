@@ -11,12 +11,7 @@
 
 #import "UIScrollView+SORefresh.h"
 #import "SORefreshContent.h"
+#import "SORefreshScrollObserver.h"
 #import "SORefreshContainer.h"
-
-#define SORefreshFastAnimationDuration 0.25
-#define SORefreshSlowAnimationDuration 0.4
-
-#define SORefreshSrcName(file) [@"SORefresh.bundle" stringByAppendingPathComponent:file]
-#define SORefreshFrameworkSrcName(file) [@"Frameworks/SORefresh.framework/SORefresh.bundle" stringByAppendingPathComponent:file]
 
 #endif
