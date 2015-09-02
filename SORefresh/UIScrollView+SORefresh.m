@@ -7,7 +7,7 @@
 //
 
 #import "UIScrollView+SORefresh.h"
-
+#import "UIScrollView+SORefreshPrivate.h"
 #import "SORefreshScrollObserver.h"
 
 #import "SORefreshNormalHeader.h"
@@ -15,7 +15,71 @@
 
 #import <objc/runtime.h>
 
+extern NSString *const SORefreshContentOffsetKeyPath;
+extern NSString *const SORefreshContentSizeKeyPath;
+extern NSString *const SORefreshStateKeyPath;
+
 @implementation UIScrollView (SORefresh)
+
+#pragma mark scrollObserver
+- (void)setupScrollObserver
+{
+    if (!self.scrollObserver) {
+        self.scrollObserver = [SORefreshScrollObserver observerWithScrollView:self];
+    }
+}
+
+static const char SORefreshScrollObserverKey = 'O';
+- (void)setScrollObserver:(SORefreshScrollObserver *)scrollObserver
+{
+    if (scrollObserver != self.scrollObserver) {
+        if (!scrollObserver) {
+            
+        }
+        [self willChangeValueForKey:@"scrollObserver"];
+        objc_setAssociatedObject(self, &SORefreshScrollObserverKey, scrollObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [self didChangeValueForKey:@"scrollObserver"];
+    }
+}
+
+- (SORefreshScrollObserver *)scrollObserver
+{
+    return objc_getAssociatedObject(self, &SORefreshScrollObserverKey);
+}
+
+#pragma mark - Interface
+
+- (void)addSORefreshNormalHeaderWithRefreshBlock:(SORefreshingBlock)refreshBlock
+{
+    SORefreshNormalHeader *normalHeader = [SORefreshNormalHeader new];
+    [self addHeaderView:normalHeader refreshBlock:refreshBlock];
+}
+
+- (void)addSORefreshNormalFooterWithRefreshBlock:(SORefreshingBlock)refreshBlock;
+{
+    SORefreshNormalFooter *normalFooter = [SORefreshNormalFooter new];
+    [self addFooterView:normalFooter refreshBlock:refreshBlock];
+}
+
+- (void)addHeaderView:(UIView<SORefreshHeaderContent> *)headerView refreshBlock:(SORefreshingBlock)refreshBlock
+{
+    SORefreshHeaderContainer *headerContainer = [SORefreshHeaderContainer new];
+    headerContainer.content = headerView;
+    headerContainer.refreshingBlock = refreshBlock;
+    self.headerContainer = headerContainer;
+}
+
+- (void)addFooterView:(UIView<SORefreshFooterContent> *)footerView refreshBlock:(SORefreshingBlock)refreshBlock
+{
+    SORefreshFooterContainer *footerContainer = [SORefreshFooterContainer new];
+    footerContainer.content = footerView;
+    footerContainer.refreshingBlock = refreshBlock;
+    self.footerContainer = footerContainer;
+}
+
+@end
+
+@implementation UIScrollView (SOPrivate)
 
 #pragma mark - headerContainer
 static const char SORefreshHeaderKey = 'H';
@@ -65,34 +129,6 @@ static const char SORefreshFooterKey = 'F';
     }
 }
 
-- (SORefreshFooterContainer *)footerContainer
-{
-    return objc_getAssociatedObject(self, &SORefreshFooterKey);
-}
-
-#pragma mark scrollObserver
-- (void)setupScrollObserver
-{
-    if (!self.scrollObserver) {
-        self.scrollObserver = [SORefreshScrollObserver observerWithScrollView:self];
-    }
-}
-
-static const char SORefreshScrollObserverKey = 'O';
-- (void)setScrollObserver:(SORefreshScrollObserver *)scrollObserver
-{
-    if (scrollObserver != self.scrollObserver) {
-        [self willChangeValueForKey:@"scrollObserver"];
-        objc_setAssociatedObject(self, &SORefreshScrollObserverKey, scrollObserver, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        [self didChangeValueForKey:@"scrollObserver"];
-    }
-}
-
-- (SORefreshScrollObserver *)scrollObserver
-{
-    return objc_getAssociatedObject(self, &SORefreshScrollObserverKey);
-}
-
 - (CGFloat)SOTopInset
 {
     return self.contentInset.top;
@@ -117,34 +153,9 @@ static const char SORefreshScrollObserverKey = 'O';
     self.contentInset = insets;
 }
 
-#pragma mark - Interface
-
-- (void)addSORefreshNormalHeaderWithRefreshBlock:(SORefreshingBlock)refreshBlock
+- (SORefreshFooterContainer *)footerContainer
 {
-    SORefreshNormalHeader *normalHeader = [SORefreshNormalHeader new];
-    [self addHeaderView:normalHeader refreshBlock:refreshBlock];
-}
-
-- (void)addSORefreshNormalFooterWithRefreshBlock:(SORefreshingBlock)refreshBlock;
-{
-    SORefreshNormalFooter *normalFooter = [SORefreshNormalFooter new];
-    [self addFooterView:normalFooter refreshBlock:refreshBlock];
-}
-
-- (void)addHeaderView:(UIView<SORefreshHeaderContent> *)headerView refreshBlock:(SORefreshingBlock)refreshBlock
-{
-    SORefreshHeaderContainer *headerContainer = [SORefreshHeaderContainer new];
-    headerContainer.content = headerView;
-    headerContainer.refreshingBlock = refreshBlock;
-    self.headerContainer = headerContainer;
-}
-
-- (void)addFooterView:(UIView<SORefreshFooterContent> *)footerView refreshBlock:(SORefreshingBlock)refreshBlock
-{
-    SORefreshFooterContainer *footerContainer = [SORefreshFooterContainer new];
-    footerContainer.content = footerView;
-    footerContainer.refreshingBlock = refreshBlock;
-    self.footerContainer = footerContainer;
+    return objc_getAssociatedObject(self, &SORefreshFooterKey);
 }
 
 @end

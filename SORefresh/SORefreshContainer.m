@@ -7,17 +7,11 @@
 //
 
 #import "SORefreshContainer.h"
+#import "SORefreshScrollObserver.h"
+#import "UIScrollView+SORefresh.h"
+#import "UIScrollView+SORefreshPrivate.h"
 
 @implementation SORefreshContainer
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-
-    }
-    return self;
-}
 
 - (void)setContent:(UIView<SORefreshContent> *)content
 {
@@ -30,20 +24,26 @@
     [self addConstraints:constraints];
 }
 
+- (CGFloat)contentHeight
+{
+    return [self.content contentHeight];
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    if (!newSuperview) {
+        UIScrollView *scrollView = (UIScrollView *)self.superview;
+        [scrollView.scrollObserver stopObserveScrollView:scrollView];
+        self.refreshingBlock = nil;
+    }
+}
+
 @end
 
 @implementation SORefreshHeaderContainer
 
 @dynamic content;
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.contentHeight = 54.f;
-    }
-    return self;
-}
 
 @end
 
@@ -55,7 +55,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.contentHeight = 44.f;
         self.hidden = YES;
     }
     return self;

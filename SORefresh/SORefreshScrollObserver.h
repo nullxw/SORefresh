@@ -19,6 +19,6 @@
 @property (nonatomic) BOOL hasMoreData;
 
 + (instancetype)observerWithScrollView:(UIScrollView *)scrollView;
-- (void)stopObserver;
+- (void)stopObserveScrollView:(UIScrollView *)scrollView;
 
 @end

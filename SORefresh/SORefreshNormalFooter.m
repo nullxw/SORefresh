@@ -36,6 +36,11 @@
     return self;
 }
 
+- (CGFloat)contentHeight
+{
+    return 44.f;
+}
+
 - (void)updateConstraints
 {
     [super updateConstraints];

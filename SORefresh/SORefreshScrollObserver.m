@@ -9,6 +9,7 @@
 #import "SORefreshScrollObserver.h"
 #import "UIScrollView+SORefresh.h"
 #import "SORefreshConfigure.h"
+#import "UIScrollView+SORefreshPrivate.h"
 
 #pragma mark - Const
 NSString *const SORefreshContentOffsetKeyPath = @"contentOffset";
@@ -31,11 +32,9 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
 @interface SORefreshScrollObserver ()
 
 @property (weak, nonatomic) UIScrollView *scrollView;
-
 @property (assign, nonatomic) SORefreshScrollState scrollState;
-
 @property (assign, nonatomic) BOOL headerHidden;
-//@property (assign, nonatomic) BOOL footerHidden;
+@property (strong, nonatomic) UIPanGestureRecognizer *pan;
 
 @end
 
@@ -52,6 +51,7 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
     self = [super init];
     if (self) {
         _hasMoreData = YES;
+        _scrollState = SORefreshScrollStateNormal;
         self.scrollView = scrollView;
         [self startObserver];
     }
@@ -64,7 +64,9 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
         return;
     }
     _scrollState = scrollState;
+#ifdef DEBUG
     [self logScrollState];
+#endif
 }
 
 - (void)setHasMoreData:(BOOL)hasMoreData
@@ -87,14 +89,18 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
     NSKeyValueObservingOptions options = NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld;
     [self.scrollView addObserver:self forKeyPath:SORefreshContentOffsetKeyPath options:options context:nil];
     [self.scrollView addObserver:self forKeyPath:SORefreshContentSizeKeyPath options:options context:nil];
-    [self.scrollView.panGestureRecognizer addObserver:self forKeyPath:SORefreshStateKeyPath options:options context:nil];
+    self.pan = self.scrollView.panGestureRecognizer;
+    [self.pan addObserver:self forKeyPath:SORefreshStateKeyPath options:options context:nil];
 }
 
-- (void)stopObserver
+- (void)stopObserveScrollView:(UIScrollView *)scrollView;
 {
-    [self.scrollView removeObserver:self forKeyPath:SORefreshContentOffsetKeyPath];
-    [self.scrollView removeObserver:self forKeyPath:SORefreshContentSizeKeyPath];
-    [self.scrollView.panGestureRecognizer removeObserver:self forKeyPath:SORefreshStateKeyPath];
+    if (self.pan) {
+        [scrollView removeObserver:self forKeyPath:SORefreshContentOffsetKeyPath];
+        [scrollView removeObserver:self forKeyPath:SORefreshContentSizeKeyPath];
+        [self.pan removeObserver:self forKeyPath:SORefreshStateKeyPath];
+        self.pan = nil;
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -236,24 +242,6 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
         }];
     }
 }
-
-//- (void)setFooterHidden:(BOOL)footerHidden
-//{
-//    if (footerHidden) {
-//        self.scrollState = SORefreshScrollStateNormal;
-//        [UIView animateWithDuration:SORefreshSlowAnimationDuration animations:^{
-//            self.scrollView.SOBottomInset -= self.scrollView.headerContainer.contentHeight;
-//        }];
-//    } else {
-//        self.scrollState = SORefreshScrollStateFooterRefreshing;
-//        if (self.scrollView.headerContainer.refreshingBlock) {
-//            self.scrollView.headerContainer.refreshingBlock();
-//        }
-//        [UIView animateWithDuration:SORefreshFastAnimationDuration animations:^{
-//            self.scrollView.SOBottomInset += self.scrollView.headerContainer.contentHeight;
-//        }];
-//    }
-//}
 
 - (void)logScrollState
 {

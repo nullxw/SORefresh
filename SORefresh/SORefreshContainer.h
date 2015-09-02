@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SORefreshContent.h"
+@class SORefreshScrollObserver;
 
 typedef void(^SORefreshingBlock)();
 
@@ -24,7 +25,7 @@ typedef void(^SORefreshingBlock)();
 /* 刷新回调 */
 @property (copy, nonatomic) SORefreshingBlock refreshingBlock;
 /** 刷新界面的高度 */
-@property (assign, nonatomic) CGFloat contentHeight;
+- (CGFloat)contentHeight;
 
 @end
 

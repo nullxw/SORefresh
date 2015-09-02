@@ -12,9 +12,7 @@
 #define SORefreshFastAnimationDuration 0.25
 #define SORefreshSlowAnimationDuration 0.4
 
-#define SORefreshSrcName(file) [@"SORefresh.bundle" stringByAppendingPathComponent:file]
-#define SORefreshFrameworkSrcName(file) [@"Frameworks/SORefresh.framework/SORefresh.bundle" stringByAppendingPathComponent:file]
-
-
+#define SORefreshDefaultHeaderHeight   54.f
+#define SORefreshDefaultFooterHeight   44.f
 
 #endif

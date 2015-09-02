@@ -33,7 +33,7 @@
 - (void)prepareSomeData
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.dataCount = 24;
+        self.dataCount = 4;
         self.tableView.scrollObserver.headerRefreshing = NO;
         [self.tableView reloadData];
     });
@@ -43,7 +43,7 @@
 {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.dataCount += 10;
-        if (self.dataCount > 50) {
+        if (self.dataCount > 30) {
             self.tableView.scrollObserver.hasMoreData = NO;
         }
         self.tableView.scrollObserver.footerRefreshing = NO;

@@ -7,7 +7,9 @@
 //
 
 #import "SORefreshNormalHeader.h"
-#import "SORefreshConfigure.h"
+
+#define SORefreshSrcName(file) [@"SORefresh.bundle" stringByAppendingPathComponent:file]
+#define SORefreshFrameworkSrcName(file) [@"Frameworks/SORefresh.framework/SORefresh.bundle" stringByAppendingPathComponent:file]
 
 @interface SORefreshNormalHeader ()
 
@@ -21,6 +23,7 @@
 
 @implementation SORefreshNormalHeader
 
+/* 自定义的刷新界面可在initWithFrame:方法中初始化其要显示的元素 */
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -59,8 +62,16 @@
     return self;
 }
 
+/* 自定义的刷新界面可在这个方法中返回需要显示的刷新界面的高度 */
+- (CGFloat)contentHeight
+{
+    return 54.f;
+}
+
+/* 自定义的刷新界面可在这个方法中为子元素创建约束 */
 - (void)updateConstraints
 {
+    //  继承自UIView的方法，先调用super的对应方法
     [super updateConstraints];
     
     //_labelView
@@ -82,12 +93,11 @@
     [self addConstraints:selfConstraints];
 }
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
+/*!
+    @brief 根据下拉比例来调整刷新界面的样式
     
-}
-
+    @param pullPercent 下拉比例，下拉距离 / 下拉界面高度。
+ */
 - (void)setPullPercent:(float)pullPercent
 {
     if (pullPercent < 1.0) {
@@ -99,12 +109,18 @@
     }
 }
 
+/*
+    @brief 设置刷新界面为刷新中的状态
+ */
 - (void)setBeginRefresh
 {
     [self.activityIndicatorView startAnimating];
     self.arrowView.hidden = YES;
 }
 
+/*
+    @brief 设置刷新界面为刷新结束的状态
+ */
 - (void)setEndRefresh
 {
     [self.activityIndicatorView stopAnimating];
