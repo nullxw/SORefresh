@@ -20,11 +20,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    __weak typeof(self) ws = self;
     [self.tableView addSORefreshNormalHeaderWithRefreshBlock:^{
-        [self prepareSomeData];
+        [ws prepareSomeData];
     }];
     [self.tableView addSORefreshNormalFooterWithRefreshBlock:^{
-        [self loadMoreData];
+        [ws loadMoreData];
     }];
     self.tableView.scrollObserver.headerRefreshing = YES;
 }

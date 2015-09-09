@@ -21,11 +21,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    __weak typeof(self) ws = self;
     [self.tableView addSORefreshNormalHeaderWithRefreshBlock:^{
-        [self prepareSomeData];
+        [ws prepareSomeData];
     }];
     [self.tableView addSORefreshNormalFooterWithRefreshBlock:^{
-        [self loadMoreData];
+        [ws loadMoreData];
     }];
     self.tableView.scrollObserver.headerRefreshing = YES;
 }

@@ -1,6 +1,6 @@
 //
 //  UIScrollView+SORefreshPrivate.h
-//  SORefreshDemo
+//  https://github.com/scfhao/SORefresh
 //
 //  Created by scfhao on 15/9/2.
 //  Copyright (c) 2015年 scfhao. All rights reserved.
