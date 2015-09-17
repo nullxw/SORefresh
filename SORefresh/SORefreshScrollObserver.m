@@ -158,7 +158,7 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
             }
             [self.scrollView.headerContainer.content setPullPercent:pullPercent];
         }
-    } else if (offsetY + scrollViewHeight > contentHeight && contentHeight > scrollViewHeight) {
+    } else if (offsetY + scrollViewHeight > contentHeight) {
         // show footer
         if (self.scrollView.footerContainer) {
             CGFloat footerReveal = offsetY + scrollViewHeight - contentHeight;
@@ -208,6 +208,7 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
         return;
     }
     if (footerRefreshing && self.hasMoreData && self.scrollView.footerContainer.refreshingBlock) {
+        self.scrollView.footerContainer.hidden = NO;
         self.scrollState = SORefreshScrollStateFooterRefreshing;
         [self.scrollView.footerContainer.content setBeginRefresh];
         self.scrollView.footerContainer.refreshingBlock();
@@ -216,6 +217,11 @@ typedef NS_ENUM(NSUInteger, SORefreshScrollState) {
         self.scrollState = SORefreshScrollStateNormal;
         if (self.hasMoreData) {
             [self.scrollView.footerContainer.content setEndRefresh];
+            if (self.scrollView.contentSize.height < self.scrollView.bounds.size.height) {
+                self.scrollView.footerContainer.hidden = YES;
+            }
+        } else {
+            self.scrollView.footerContainer.hidden = NO;
         }
     }
 }

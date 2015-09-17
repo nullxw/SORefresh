@@ -115,6 +115,7 @@
 - (void)setBeginRefresh
 {
     [self.activityIndicatorView startAnimating];
+    self.tip.text = kSORefreshNormalHeaderMessageRefreshing;
     self.arrowView.hidden = YES;
 }
 
@@ -124,6 +125,7 @@
 - (void)setEndRefresh
 {
     [self.activityIndicatorView stopAnimating];
+    self.tip.text = kSORefreshNormalHeaderMessagePull;
     self.arrowView.hidden = NO;
     self.arrowView.transform = CGAffineTransformIdentity;
 }
