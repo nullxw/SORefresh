@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E7364678-14B2-461B-8355-5D51FB4AE49F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SORefreshDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>177510263E639DA713201191F25DB648930352DF</key>
+		<string>https://github.com/scfhao/SORefresh.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SORefreshDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>177510263E639DA713201191F25DB648930352DF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/scfhao/SORefresh.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>177510263E639DA713201191F25DB648930352DF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>177510263E639DA713201191F25DB648930352DF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SORefreshDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

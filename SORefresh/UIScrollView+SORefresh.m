@@ -19,6 +19,13 @@ extern NSString *const SORefreshContentOffsetKeyPath;
 extern NSString *const SORefreshContentSizeKeyPath;
 extern NSString *const SORefreshStateKeyPath;
 
+@interface SORefreshScrollObserver ()
+
++ (instancetype)observerWithScrollView:(UIScrollView *)scrollView;
+- (void)stopObserveScrollView:(UIScrollView *)scrollView;
+
+@end
+
 @implementation UIScrollView (SORefresh)
 
 #pragma mark scrollObserver

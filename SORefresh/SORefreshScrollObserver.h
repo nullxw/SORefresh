@@ -14,11 +14,8 @@
  */
 @interface SORefreshScrollObserver : NSObject
 
-@property (nonatomic, getter=isHeaderRefreshing) BOOL headerRefreshing;
-@property (nonatomic, getter=isFooterRefreshing) BOOL footerRefreshing;
-@property (nonatomic) BOOL hasMoreData;
-
-+ (instancetype)observerWithScrollView:(UIScrollView *)scrollView;
-- (void)stopObserveScrollView:(UIScrollView *)scrollView;
+@property (nonatomic, getter=isHeaderRefreshing) BOOL headerRefreshing;// 控制header的刷新与否
+@property (nonatomic, getter=isFooterRefreshing) BOOL footerRefreshing;// 控制footer的刷新与否
+@property (nonatomic) BOOL hasMoreData;// 如果没有更多数据需要刷新，可设置此属性为NO；
 
 @end
